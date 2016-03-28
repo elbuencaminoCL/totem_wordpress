@@ -20,6 +20,8 @@ function wpse_setup_theme() {
         add_image_size( 'home', 360, 300, true);
         add_image_size( 'int', 675, 750, true);
         add_image_size( 'ficha', 528, 400, true);
+        add_image_size( 'wide', 1064, 250, array('center', 'center'));
+        add_image_size( 'horizontal-image', 1080, 300, array('center', 'center'));
     }
 } 
 add_action( 'after_setup_theme', 'wpse_setup_theme' );
@@ -153,7 +155,7 @@ global $wpdb;
             if ( $i === 0 ) $pos = ''; elseif ( $i === $home_pages_size ) $pos = 'bloque'; else $pos = 'bloque';
             if($hpages->menu_order >= 0){
                 $value = get_post_meta($hpages->ID, '_seleccione_estilo_de_titulo', true);
-                echo '<div class="block col-xs-4">';
+                echo '<div class="block col-xs-4" id="'.$hpages->post_name.'">';
                     echo get_the_post_thumbnail($hpages->ID, 'home', array('class' => 'img-responsive'));
                         if($value=='Una línea'){echo '<div class="title block-1">';}
                         if($value=='Dos líneas'){echo '<div class="title block-2">';}
@@ -183,7 +185,7 @@ global $wpdb;
             if($dpages->menu_order >= 0){
                 $value_d = get_post_meta($dpages->ID, '_seleccione_estilo_de_titulo', true);
                 $text= apply_filters('the_excerpt', get_post($dpages->ID)->post_excerpt);
-                echo '<div class="block col-xs-6">';
+                echo '<div class="block col-xs-6" id="'.$dpages->post_name.'">';
                     echo get_the_post_thumbnail($dpages->ID, 'int', array('class' => 'img-responsive'));
                     if($value_d=='Una línea'){echo '<div class="title block-1">';}
                     if($value_d=='Dos líneas'){echo '<div class="title block-2">';}
@@ -379,7 +381,7 @@ function my_connection_types() {
         'reciprocal' => true
     ) );
     p2p_register_connection_type( array(
-        'name' => 'tertimonios_to_tours',
+        'name' => 'testimonios_to_tours',
         'from' => 'testimonios',
         'to' => 'tours',
         'cardinality' => 'many-to-many',

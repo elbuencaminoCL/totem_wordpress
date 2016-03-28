@@ -25,7 +25,22 @@
     <script src="<?php bloginfo('template_url'); ?>/js/jquery.jcarousel.min.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/js/bootstrap.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/js/jquery.lettering.js" type="text/javascript"></script>
-    <?php if (is_page('servicios-spa') || is_singular('tours') || is_page('actividades-y-tours-nocturnos') || is_child(13)) { ?>
+    <?php if (is_page('inicio')) { ?>
+        <script>
+            $(document).ready(function() {
+                $(".block .title h2 a").lettering('words');
+            });
+        </script>
+    <?php } ?>
+    <?php if (is_page() && !is_page('inicio')) { ?>
+        <script>
+            $(document).ready(function() {
+                $(".top .title h2").lettering('words');
+                $(".block h3 a").lettering('words');
+            });
+        </script>
+    <?php } ?>
+    <?php if (is_page('servicios-spa') || is_singular('tours') || is_page('tours-y-actividades-nocturnos') || is_child(13)) { ?>
         <script>
             $(document).ready(function(){
                 $('.price-description').hide();
@@ -75,6 +90,15 @@
             });
         </script>
     <?php } ?>
+    <?php if(is_singular('tours')) { ?>
+        <link href="<?php bloginfo('stylesheet_directory'); ?>/css/colorbox.css" rel="stylesheet" media="screen">
+        <script src="<?php bloginfo('stylesheet_directory'); ?>/js/jquery.colorbox.js" type="text/javascript"></script>
+        <script>
+            $(document).ready(function(){
+                $(".ajax").colorbox({iframe:true, width:"40%", height:"85%"});
+            });
+        </script>
+    <? } ?>
     <?php if(is_page('info-de-contacto')) { ?>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/liquid-slider.css">    

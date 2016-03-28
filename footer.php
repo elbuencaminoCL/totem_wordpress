@@ -22,6 +22,29 @@
                     </div>
                 </div>
             </footer>
+        <?php } elseif ( is_single() ) { ?>
+            <footer id="footer" class="clearfix footer-ficha">
+                <div class="container cont-testimonios shadow">
+                    <div class="col-xs-10 no-float">
+                        <?php
+                            $connected = new WP_Query( array(
+                                'connected_type' => 'testimonios_to_tours',
+                                'connected_items' => get_queried_object(),
+                                'nopaging' => true,
+                            ) );
+                            if ( $connected->have_posts() ) :
+                        ?>
+                        <?php $i=0; while ( $connected->have_posts() ) : $connected->the_post(); ?>
+                            <div class="testimonios">
+                                <h6><? the_title();?></h6>
+                            </div>
+                        <?php $i++; endwhile; ?>
+                        <?php wp_reset_postdata();
+                            endif;
+                        ?>
+                    </div>
+                </div>
+            </footer>
         <?php } elseif ( is_page('evalua-tu-estadia') ) { ?>
             <footer id="footer" class="clearfix absolute-footer">
                 <div class="nav-buttons">

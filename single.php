@@ -28,7 +28,7 @@
 
                 <!--main-->
                 <div id="main" class="clearfix">
-                    <div class="cont-servicios">
+                    <div class="cont-servicios cont-ficha">
                         <div class="clearfix">
                             <div class="tour-title">
                                 <h4><? the_title();?></h4>
@@ -81,12 +81,38 @@
                                             </div>
                                         <?php endif; ?>
                                     </div>
-                                    <div class="foot-col">
-                                        <div class="price">
-                                            <div class=""><span>Precio</span> clp 23.000 / usd 32</div>
-                                            <a href="#" class="button reserva upper">Reservar</a>
+                                    <?php
+                                        $connected = new WP_Query( array(
+                                            'connected_type' => 'testimonios_to_tours',
+                                            'connected_items' => get_queried_object_id(),
+                                            'nopaging' => true,
+                                        ) );
+                                        if ( $connected->have_posts() ) :
+                                    ?>
+                                    <?php $i=0; while ( $connected->have_posts() ) : $connected->the_post(); ?>
+                                        <div class="foot-col">
+                                            <div class="price">
+                                                <? 
+                                                    if(get_post_meta($post->ID, '_precio_pesos', true)){
+                                                        echo '<div class="cont-main-price">';
+                                                            echo '<span>Precio:</span> CLP '.get_post_meta($post->ID, '_precio_pesos', true).' / USD '.get_post_meta($post->ID, '_precio_dolares', true);
+                                                        echo '</div>';
+                                                    }
+                                                ?>
+                                                <? 
+                                                    if(get_post_meta($post->ID, '_precio_pesos', true)){
+                                                        echo '<div class="cont-main-price">';
+                                                            echo '<span>Precio:</span> CLP '.get_post_meta($post->ID, '_precio_pesos', true).' / USD '.get_post_meta($post->ID, '_precio_dolares', true);
+                                                        echo '</div>';
+                                                    }
+                                                ?>
+                                                <a href="#" class="button reserva upper">Reservar</a>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php $i++; endwhile; ?>
+                                    <?php wp_reset_postdata();
+                                        endif;
+                                    ?>
                                 </div>
                             </diV>
                         </div>

@@ -20,7 +20,9 @@ h3 {
 a {
   cursor: pointer;
 }
-a:hover {
+a:hover,
+a:visited,
+a:focus {
   text-decoration: none;
 }
 .center {
@@ -54,14 +56,17 @@ a:hover {
   width: 100%;
   position: relative;
   height: 1920px;
+  overflow: hidden;
 }
 .container {
   max-width: 1080px !important;
   width: 1080px !important;
+  overflow: hidden;
 }
 #main {
   width: 100%;
   display: block;
+  overflow: hidden;
 }
 /*LANDING*/
 .cont-landing {
@@ -131,6 +136,9 @@ a:hover {
   margin: 25px auto;
   width: auto;
 }
+#header .fixed-position.fixed-subtitle {
+  height: 100px;
+}
 #header .fixed-position {
   position: absolute;
   width: 100%;
@@ -147,8 +155,8 @@ a:hover {
   max-width: 330px;
   min-height: 60px;
   padding: 12px 25px !important;
-  border: 2px solid #ffffff;
   text-align: center;
+  background: url(../imag/back/bg-titles.png) repeat left top;
 }
 #header .fixed-position .title.block-3 {
   height: 150px;
@@ -247,7 +255,7 @@ a:hover {
 }
 /*HOME*/
 .intro {
-  padding: 35px 0;
+  padding: 33px 0;
   color: #8b572a;
   z-index: 40;
   text-align: center;
@@ -266,7 +274,7 @@ a:hover {
   min-height: 290px;
   padding: 0;
   background: #b2753e;
-  text-align: center;
+  text-align: center !important;
   border: none;
 }
 .cont-servicios .block h2 {
@@ -281,6 +289,7 @@ a:hover {
   width: 100%;
 }
 .cont-servicios .block .title {
+  display: inline;
   position: absolute;
   width: auto;
   max-width: 270px;
@@ -293,6 +302,7 @@ a:hover {
   padding: 12px 25px;
   text-align: center;
   background: url(../imag/back/bg-titles.png) repeat left top;
+  float: none !important;
 }
 .cont-servicios .block .title h2,
 .cont-servicios .block .title h3 {
@@ -304,6 +314,9 @@ a:hover {
 .cont-servicios .block .title h2 a,
 .cont-servicios .block .title h3 a {
   color: #ffffff;
+}
+.cont-servicios .block .title h2 a {
+  opacity: .8;
 }
 .cont-servicios .block .block-3 {
   height: 125px;
@@ -329,6 +342,174 @@ a:hover {
   font-weight: 300;
   line-height: 140%;
 }
+/*ESTILOS TITULOS*/
+#tours-y-actividades-diurnos .title .word1 {
+  font-size: 46px;
+  font-weight: 300;
+}
+#tours-y-actividades-diurnos .title .word2 {
+  font-size: 46px;
+  font-weight: 300;
+}
+#tours-y-actividades-diurnos .title .word4 {
+  font-size: 42px;
+  font-weight: 700;
+}
+#tours-y-actividades-diurnos .fixed-position .title .word1 {
+  font-size: 56px;
+  font-weight: 300;
+}
+#tours-y-actividades-diurnos .fixed-position .title .word2 {
+  font-size: 48px;
+  font-weight: 300;
+}
+#tours-y-actividades-diurnos .fixed-position .title .word4 {
+  font-size: 48px;
+  font-weight: 700;
+}
+#tours-y-actividades-nocturnos .title .word1 {
+  font-size: 46px;
+  font-weight: 300;
+}
+#tours-y-actividades-nocturnos .title .word2 {
+  font-size: 46px;
+  font-weight: 300;
+}
+#tours-y-actividades-nocturnos .title .word2 {
+  font-size: 28px;
+}
+#lugares-de-interes .title .word1 {
+  font-size: 36px;
+  font-weight: 300;
+}
+#servicios-hotel .title .word1 {
+  font-size: 24px;
+  font-weight: 300;
+}
+#servicios-hotel .title .word2 {
+  font-size: 42px;
+  font-weight: 700;
+}
+#servicios-hotel .fixed-position .title .word1 {
+  font-size: 32px;
+  font-weight: 300;
+}
+#servicios-hotel .fixed-position .title .word2 {
+  font-size: 55px;
+  font-weight: 700;
+  line-height: 100%;
+}
+#servicios-spa .title.block-2 {
+  height: 125px !important;
+}
+#servicios-spa .title .word1 {
+  font-size: 24px;
+  font-weight: 300;
+}
+#servicios-spa .title .word2 {
+  font-size: 78px;
+  font-weight: 700;
+  line-height: 80%;
+}
+#restaurant-y-bar-pataska .title.block-2 {
+  height: 100px !important;
+}
+#restaurant-y-bar-pataska .title .word1 {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+#restaurant-y-bar-pataska .title .word2 {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+#restaurant-y-bar-pataska .title .word3 {
+  font-size: 20px;
+  font-weight: 300;
+}
+#restaurant-y-bar-pataska .title .word4 {
+  font-size: 46px;
+  font-weight: 700;
+}
+#info-de-contacto .title .word1 {
+  font-size: 36px;
+  font-weight: 300;
+}
+#info-de-contacto .title .word2 {
+  font-size: 36px;
+  font-weight: 300;
+}
+#guia-de-servicios .title .word1 {
+  font-size: 36px;
+  font-weight: 300;
+}
+#guia-de-servicios .title .word2 {
+  font-size: 36px;
+  font-weight: 300;
+}
+#evalua-tu-estadia .title .word1 {
+  font-size: 30px;
+  font-weight: 300;
+}
+#evalua-tu-estadia .title .word2 {
+  font-size: 30px;
+  font-weight: 300;
+}
+#evalua-tu-estadia .title .word3 {
+  font-size: 39px;
+  font-weight: 700;
+}
+#ultimos-poblados .title .word1 {
+  font-size: 38px;
+  font-weight: 300;
+}
+#ultimos-poblados .title .word2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+#cordillera-de-los-andes .title {
+  max-width: 320px !important;
+  height: 105px;
+}
+#cordillera-de-los-andes .title .word1 {
+  font-size: 30px;
+  font-weight: 300;
+}
+#cordillera-de-los-andes .title .word2 {
+  font-size: 30px;
+  font-weight: 300;
+}
+#cordillera-de-los-andes .title .word3 {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 100%;
+}
+#cordillera-de-los-andes .title .word4 {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 100%;
+}
+#valle-de-cochiguaz .title .word1 {
+  font-size: 38px;
+  font-weight: 300;
+}
+#valle-de-cochiguaz .title .word2 {
+  font-size: 38px;
+  font-weight: 300;
+}
+#valle-de-cochiguaz .title .word3 {
+  font-size: 28px;
+  font-weight: 700;
+}
+#la-serena .title .word1 {
+  font-size: 32px;
+  font-weight: 700;
+}
+#la-serena .title .word2 {
+  font-size: 32px;
+  font-weight: 700;
+}
 /*TOURS*/
 .cont-grid-detail {
   padding: 4px;
@@ -342,6 +523,7 @@ a:hover {
 .cont-grid-detail .item-tour {
   position: absolute;
   bottom: 0;
+  width: 100%;
 }
 .cont-grid-detail .item-tour h4 {
   margin: 0 0 15px;
@@ -374,7 +556,8 @@ a:hover {
   float: right;
 }
 .cont-grid-detail .noc {
-  height: 398px;
+  height: 397px;
+  overflow: hidden;
 }
 .cont-grid-detail .noc .cont-buttons {
   margin-top: -65px;
@@ -382,7 +565,16 @@ a:hover {
 .cont-grid-detail .noc img.img-responsive {
   min-height: 250px;
 }
+.cont-grid-detail .noc .description {
+  width: 100%;
+  min-height: 165px;
+  background: #ffffff;
+}
+.cont-grid-detail .noc .top-description {
+  min-height: 100px;
+}
 .cont-grid-detail .description {
+  width: 100%;
   min-height: 195px;
   background: #ffffff;
 }
@@ -456,7 +648,7 @@ a:hover {
 .cont-data {
   padding: 12px 0;
   background: #d2d2d4;
-  z-index: 10;
+  z-index: 40;
 }
 .cont-data ul {
   margin: 0 70px;
@@ -480,6 +672,7 @@ a:hover {
 .cont-cell {
   height: 565px;
   padding: 0;
+  z-index: 30;
 }
 .cont-cell .brown-col {
   height: 565px;
@@ -505,6 +698,26 @@ a:hover {
   margin: 0 0 10px;
   color: #505050;
 }
+.cont-cell .foot-col .cont-main-price {
+  margin: 0 0 15px;
+}
+.cont-cell .foot-col .price {
+  display: block;
+  margin: 20px 70px;
+  font-size: 22px;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.cont-cell .foot-col .price span {
+  font-weight: 700;
+}
+.cont-cell .foot-col .reserva {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  float: none;
+}
 .cont-description {
   padding: 50px 0;
   letter-spacing: 1px;
@@ -520,6 +733,12 @@ a:hover {
   font-size: 18px;
   line-height: 170%;
   color: #444444;
+}
+.cont-ficha {
+  max-height: 735px;
+}
+.footer-ficha {
+  height: 165px;
 }
 /*BUTTONS*/
 .button {
@@ -829,6 +1048,28 @@ a:hover {
   padding: 70px 0;
   text-align: center;
 }
+.cont-info p {
+  margin: 0 0 30px;
+  font-weight: 300;
+  font-size: 26px;
+}
+.cont-info p.first strong {
+  color: #781513;
+  font-weight: 700;
+}
+.cont-info input[type="text"] {
+  width: 340px;
+  margin: 0 0 20px;
+  border: 1px solid #8b572a;
+  background: #ffffff;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+.cont-info .social ul li {
+  display: inline-block;
+  color: #8b572a;
+}
 .ui-keyboard-button {
   height: 3em !important;
   min-width: 3em !important;
@@ -852,6 +1093,9 @@ a:hover {
   color: #ffffff;
 }
 /*FOOTER*/
+#footer {
+  z-index: 0;
+}
 #footer .related {
   position: relative;
 }
@@ -903,8 +1147,18 @@ a:hover {
 #footer .scroll-top img {
   margin: 0 auto;
 }
+#footer .cont-testimonios {
+  height: 167px;
+  background: #ebebeb;
+}
+#footer .container.cont-testimonios {
+  padding: 40px 0 !important;
+}
 #footer .testimonios {
   background: #ebebeb;
+}
+#footer .testimonios h6 {
+  margin: 0;
 }
 .absolute-footer {
   margin-top: 730px;

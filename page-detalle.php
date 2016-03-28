@@ -6,7 +6,7 @@
 
     <?php get_header(); ?>
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-            <div class="container">
+            <div class="container no-float">
                 <!--header-->
                 <header id="header" class="header clearfix shadow">
                     <div class="cont-auxi">
@@ -28,7 +28,7 @@
                         <?php if( get_field('_subir_imagen') ): ?>
                             <img src="<?php the_field('_subir_imagen'); ?>" class="img-responsive" />
                         <?php endif; ?>
-                        <div class="fixed-position">
+                        <div class="fixed-position fixed-subtitle">
                             <div class="subtitle">
                                 <? 
                                     if(get_post_meta($post->ID, '_agregar_titulo_alternativo', true)){
@@ -50,22 +50,32 @@
                 <div id="main" class="clearfix">
                     <div class="cont-servicios">
                         <div class="clearfix">
-                            <div class="cont-grid-detail diurnos col-xs-12">
-                                <?php
-                                    $connected = new WP_Query( array(
-                                        'connected_type' => 'tours_to_page',
-                                        'connected_items' => get_queried_object(),
-                                        'nopaging' => true,
-                                    ) );
+                            <?php
+                                $connected = new WP_Query( array(
+                                    'connected_type' => 'tours_to_page',
+                                    'connected_items' => get_queried_object(),
+                                    'nopaging' => true,
+                                ) );
 
-                                    if ( $connected->have_posts() ) :
-                                ?>
+                                if ( $connected->have_posts() ) :
+                            ?>
+                            <div class="cont-grid-detail <? if ($i>3) { ?>diurnos <? } ?>col-xs-12">
                                     <?php $i=0; while ( $connected->have_posts() ) : $connected->the_post(); ?>
                                         <? if ( $i === 0 ) $pos = ''; elseif ( $i > 2 ) $pos = 'bloque2'; else $pos = 'bloque1';?>
+                                        <? if ($i=3) { ?>
+                                        <div class="block col-xs-12 noc <? echo $pos ;?>">
+                                        <? } else { ?>
                                         <div class="block col-xs-6 <? echo $pos ;?>">
-                                            <?php if(has_post_thumbnail()) :?>
-                                                <?php the_post_thumbnail('ficha', array('class' => 'img-responsive'));?>
-                                            <?php endif; ?>
+                                        <? } ?>
+                                            <? if ($i=3) { ?>
+                                                <?php if(has_post_thumbnail()) :?>
+                                                    <?php the_post_thumbnail('horizontal-image', array('class' => 'img-responsive'));?>
+                                                <?php endif; ?>
+                                            <? } else { ?>
+                                                <?php if(has_post_thumbnail()) :?>
+                                                    <?php the_post_thumbnail('ficha', array('class' => 'img-responsive'));?>
+                                                <?php endif; ?>
+                                            <? } ?>
                                             <div class="item-tour">
                                                 <h4><a href="<? the_permalink();?>"><? the_title();?></a></h4>
                                                 <div class="tour-detail clearfix">
@@ -113,10 +123,10 @@
                                             </div>
                                         </div>
                                     <?php $i++; endwhile; ?>
-                                <?php wp_reset_postdata();
-                                    endif;
-                                ?>
-                            </div>
+                                </div>
+                            <?php wp_reset_postdata();
+                                endif;
+                            ?>
                         </div>
                     </div>
                 </div>

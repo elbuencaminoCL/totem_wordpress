@@ -38,8 +38,8 @@
             <div id="main" class="clearfix shadow">
                 <div class="cont-menu no-padding">
                     <div class="cont-info">
-                        <div class="col-xs-9">
-                            <p>Para dudas o consultas llama al +56 512412217 o envía un mail a reservas@terralhotel.cl</p>
+                        <div class="col-xs-8 no-float">
+                            <p class="first">Para dudas o consultas llama al <strong>+56 512412217</strong> o envía un mail a <strong>reservas@terralhotel.cl</strong></p>
                             <h3>Síguenos en:</h3>
                             <div class="social">
                                 <ul>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="keyboard">
                             <div class="col-xs-9 no-float">
-                            <textarea id="ipad-email"></textarea>
+                            <input type="text" id="ipad-email" />
                         </div>
                     </div>
                 </div>

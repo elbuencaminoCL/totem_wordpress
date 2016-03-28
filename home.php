@@ -24,10 +24,8 @@
                 <div id="main" class="clearfix">
                     <div class="intro shadow clearfix">
                         <div class="col-xs-12">
-                            <div class="container">
-                                <div class="col-xs-9 no-float">
-                                    <p><? the_excerpt();?></p>
-                                </div>
+                            <div class="col-xs-9 no-float">
+                                <p><? the_excerpt();?></p>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ Template Name: Tours Diurnos
                                 ?>
                             </div>
                         </div>
-                        <div class="top">
+                        <div class="top" id="<? echo $post->post_name; ?>">
                             <?php if( get_field('_subir_imagen') ): ?>
                                 <img src="<?php the_field('_subir_imagen'); ?>" class="img-responsive" />
                             <?php endif; ?>
@@ -39,18 +39,20 @@ Template Name: Tours Diurnos
                     </header>
                     <!--/header-->
 
-                    <?
-                        $template = get_post_meta( $post->ID, '_seleccione_template', true);
-                        if($template=='4 bloques + 1 destacado') {
-                            include(TEMPLATEPATH .'/inc/block-5.php');
-                        } 
-                        if($template=='4 bloques') {
-                            if(function_exists('diurnos_pages')) diurnos_pages("id=".$post->ID."&class=dp&childs=true");
-                        } 
-                        if($template=='3 bloques') {
-                            include(TEMPLATEPATH .'/inc/block-3.php');
-                        }
-                    ?>
+                    <div class="cont-diurnos">
+                        <?
+                            $template = get_post_meta( $post->ID, '_seleccione_template', true);
+                            if($template=='4 bloques + 1 destacado') {
+                                include(TEMPLATEPATH .'/inc/block-5.php');
+                            } 
+                            if($template=='4 bloques') {
+                                if(function_exists('diurnos_pages')) diurnos_pages("id=".$post->ID."&class=dp&childs=true");
+                            } 
+                            if($template=='3 bloques') {
+                                include(TEMPLATEPATH .'/inc/block-3.php');
+                            }
+                        ?>
+                    </div>
                 </div>
             </div>
         <?php endwhile; endif; ?>
