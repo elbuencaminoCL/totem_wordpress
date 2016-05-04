@@ -45,10 +45,25 @@
                         <div class="cont-menu no-padding">
                             <div class="intro-guia shadow">
                                 <div class="col-xs-10 no-float">
-                                    <p>Conocida como la capital del Valle de Elqui, Vicuña es una comuna que posee una gran variedad de servicios para viajeros, turistas y habitantes. Con nuestra guía de servicios te ayudamos a encontrar todo lo que necesitas.</p>
+                                    <? the_content();?>
                                 </div>
                             </div>
                             <div class="clearfix">
+                                <?php if( have_rows('_ingresar_servicio') ): ?>
+                                    <?php while( have_rows('_ingresar_servicio') ): the_row(); 
+                                        $serv = get_sub_field('_nombre_servicio');
+                                        $num = get_sub_field('_numero_servicio');
+                                        $descripcion = get_sub_field('_descripcion_servicio');
+                                    ?>
+                                        <div class="item-servicios border-div clearfix">
+                                            <div class="col-xs-10 no-float clearfix">
+                                                <?php echo '<img src="'.$icon.'" class="img-responsive">'; ?>
+                                                <div class="vertical"><p><strong><?php echo $serv; ?>:</strong> <?php echo $descripcion; ?></p></div>
+                                            </div>
+                                        </div>
+                                    <?php endwhile; ?>
+                                <?php endif; ?>
+
                                 <div class="item-servicios border-div clearfix">
                                     <div class="col-xs-8 no-float clearfix">
                                         <div class="cont-circle">
@@ -146,84 +161,20 @@
                         <div class="cont-menu no-padding">
                             <div class="clearfix">
                                 <div class="cover clearfix">
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/salon_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Salón de eventos:</strong> Entregamos un servicio integral para que tu encuentro sea inolvidable. Tenemos una capacidad para 100 personas, y puedes contratar el proyector con telón, amplificación y coffe break si es que los necesitas.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/desayuno_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Desayuno Buffet:</strong> Desde las 7:30 hasta las 10:30 horas ofrecemos un delicioso desayuno Vicuñense, de campo, para comenzar el día de la mejor forma.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/piscina_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Piscina:</strong> Al aire libre, de 72 m2, perfecta para refrescarse en un caluroso día de Vicuña. Operativa todo el año, apta para niños y niñas.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/habitacion_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Servicio a la habitación:</strong> El desayuno a la cama y los mejores aperitivos pueden estar a sólo un llamado de distancia, con nuestro servicio de atención personalizado entre las 08:00 y 22:30 horas.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/recepcion_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Recepción:</strong> Atenta a tus necesidades las 24 horas del día.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/bilingue_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Personal bilingüe:</strong> Dispuestos a responder a todas tus dudas.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/wifi_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Wi-Fi:</strong> Disponible en habitaciones e instalaciones de Terral Hotel &amp; Spa.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/tv_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>TV Cable:</strong> Satelital, habilitado en cada habitación para la entretención de nuestros huéspedes.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/climatizacion_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Edificio climatizado:</strong> Con aire acondicionado y calefacción, para responder a las condiciones climáticas del Valle de Elqui.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/estacionamiento_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Estacionamiento:</strong> Vigilado las 24 horas del día, con capacidad para 50 vehículos. Gratuito para huéspedes.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/overlanders_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Estacionamiento para overlanders:</strong> Podemos albergar hasta 18 motorhomes en Terral Hotel &amp; Spa, donde caravanas provenientes de diversos lugares del mundo podrán disfrutar de nuestros servicios junto a lo mejor del Valle de Elqui.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float clearfix">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/traslados_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Traslados desde / hacia aeropuerto:</strong> La distancia entre Terral Hotel &amp; Spa y el aeropuerto “La Florida” de La Serena es de aprox. 62 kilómetros. Para su comodidad, ofrecemos a nuestros huéspedes un servicio de traslado confiable y puntual.</p></div>
-                                        </div>
-                                    </div>
-                                    <div class="item-servicios border-div clearfix">
-                                        <div class="col-xs-10 no-float">
-                                            <img src="<?php bloginfo('template_url'); ?>/imag/auxi/safe_icon.png" class="img-responsive" />
-                                            <div class="vertical"><p><strong>Caja de seguridad:</strong> En cada habitación, para la protección de nuestros huéspedes.</p></div>
-                                        </div>
-                                    </div>
+                                    <?php if( have_rows('_ingresar_servicio') ): ?>
+                                        <?php while( have_rows('_ingresar_servicio') ): the_row(); 
+                                            $serv = get_sub_field('_nombre_servicio');
+                                            $icon = get_sub_field('_icono_servicio');
+                                            $descripcion = get_sub_field('_descripcion_servicio');
+                                        ?>
+                                            <div class="item-servicios border-div clearfix">
+                                                <div class="col-xs-10 no-float clearfix">
+                                                    <?php echo '<img src="'.$icon.'" class="img-responsive">'; ?>
+                                                    <div class="vertical"><p><strong><?php echo $serv; ?>:</strong> <?php echo $descripcion; ?></p></div>
+                                                </div>
+                                            </div>
+                                        <?php endwhile; ?>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

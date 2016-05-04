@@ -56,20 +56,26 @@
                                     'connected_items' => get_queried_object(),
                                     'nopaging' => true,
                                 ) );
-
                                 if ( $connected->have_posts() ) :
+                                $template = get_post_meta( $post->ID, '_seleccione_template', true);
                             ?>
-                            <div class="cont-grid-detail <? if ($i>3) { ?>diurnos <? } ?>col-xs-12">
+                            <div class="cont-grid-detail <? if($template=='4 bloques') { ?>diurnos <? } ?>col-xs-12">
                                     <?php $i=0; while ( $connected->have_posts() ) : $connected->the_post(); ?>
                                         <? if ( $i === 0 ) $pos = ''; elseif ( $i > 2 ) $pos = 'bloque2'; else $pos = 'bloque1';?>
-                                        <? if ($i=3) { ?>
-                                        <div class="block col-xs-12 noc <? echo $pos ;?>">
+                                        <? if($template=='3 bloques') { ?>
+                                            <div class="block col-xs-12 noc <? echo $pos ;?>">
+                                        <? } elseif($template=='4 bloques') { ?>
+                                            <div class="block col-xs-6 <? echo $pos ;?>">
                                         <? } else { ?>
-                                        <div class="block col-xs-6 <? echo $pos ;?>">
+                                            <div class="block col-xs-6 <? echo $pos ;?>">
                                         <? } ?>
-                                            <? if ($i=3) { ?>
+                                            <? if($template=='3 bloques') { ?>
                                                 <?php if(has_post_thumbnail()) :?>
                                                     <?php the_post_thumbnail('horizontal-image', array('class' => 'img-responsive'));?>
+                                                <?php endif; ?>
+                                            <? } elseif($template=='4 bloques') { ?>
+                                                <?php if(has_post_thumbnail()) :?>
+                                                    <?php the_post_thumbnail('ficha', array('class' => 'img-responsive'));?>
                                                 <?php endif; ?>
                                             <? } else { ?>
                                                 <?php if(has_post_thumbnail()) :?>
@@ -113,7 +119,7 @@
                                                         ?>
                                                         <div class="cont-buttons clearfix">
                                                             <a href="<? the_permalink();?>" class="button info">Más Info</a>
-                                                            <a href="#" class="button reserva">Reservar</a>
+                                                            <a href="<? bloginfo('wpurl')?>/reserva/" class="button reserva ajax">Reservar</a>
                                                         </div>
                                                     </div>
                                                     <div class="cont-hide">

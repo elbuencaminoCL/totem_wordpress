@@ -11,9 +11,16 @@
                 <header id="header" class="header clearfix shadow">
                     <div class="top clearfix">
                         <div class="col-xs-12">
-                            <?php if( get_field('_subir_imagen') ): ?>
-                                <img src="<?php the_field('_subir_imagen'); ?>" class="img-responsive" />
-                            <?php endif; ?>
+                            <?
+                                if (function_exists('get_gallery_images')) {
+                                    get_gallery_images();
+                                }
+                                else {
+                                    if(get_field('_subir_imagen')){
+                                        echo '<img src="'.get_field('_subir_imagen').'" class="img-responsive" />';
+                                    }
+                                }
+                            ?>
                             <h1><a href="<?php bloginfo('wpurl'); ?>"><img src="<?php bloginfo('template_url'); ?>/imag/logo/logo.png" class="img-responsive" /></a></h1>
                         </div>
                     </div>

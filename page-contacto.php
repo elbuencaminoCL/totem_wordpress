@@ -23,7 +23,7 @@
                         ?>
                     </div>
                 </div>
-                <div class="top">
+                <div class="top" id="<? echo $post->post_name; ?>">
                     <?php if( get_field('_subir_imagen') ): ?>
                         <img src="<?php the_field('_subir_imagen'); ?>" class="img-responsive" />
                     <?php endif; ?>
@@ -35,7 +35,7 @@
             <!--/header-->
 
             <!--main-->
-            <div id="main" class="clearfix shadow">
+            <div id="main" class="clearfix">
                 <div class="cont-menu no-padding">
                     <div class="cont-info">
                         <div class="col-xs-8 no-float">
@@ -43,15 +43,17 @@
                             <h3>Síguenos en:</h3>
                             <div class="social">
                                 <ul>
-                                    <li>/TerralHotelSpa</li>
-                                    <li>@TerralHotelSpa</li>
+                                    <li class="facebook-totem">/TerralHotelSpa</li>
+                                    <li class="twitter-totem">@TerralHotelSpa</li>
                                 </ul>
                             </div>
                             <p>y entérate de todas nuestras ofertas y novedades</p>
                         </div>
                         <div class="keyboard">
                             <div class="col-xs-9 no-float">
-                            <input type="text" id="ipad-email" />
+                                <label>Ingresa tu email</label>
+                                <? echo do_shortcode('[contact-form-7 id="777" title="Contacto"]');?>
+                            </div>
                         </div>
                     </div>
                 </div>

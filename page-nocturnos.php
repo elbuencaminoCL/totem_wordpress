@@ -103,7 +103,7 @@
                                                         ?>
                                                         <div class="cont-buttons clearfix">
                                                             <a href="<? the_permalink();?>" class="button info">Más Info</a>
-                                                            <a href="#" class="button reserva">Reservar</a>
+                                                            <a href="<? bloginfo('wpurl')?>/reserva/" class="button reserva ajax">Reservar</a>
                                                         </div>
                                                     </div>
                                                     <div class="cont-hide">

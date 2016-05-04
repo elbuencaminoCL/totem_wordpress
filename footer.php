@@ -12,20 +12,39 @@
                 <div class="related">
                     <img src="<?php bloginfo('template_url'); ?>/imag/main/foot_carta_bar.png" class="img-responsive" />
                     <div class="title block-2">
-                        <h3><a href="#">Carta Restaurant</a></h3>
+                        <h3><a href="http://totem.terralhotel.cl/inicio/restaurant-y-bar-pataska/carta-restaurant/">Carta Restaurant</a></h3>
                     </div>
                 </div>
                 <div class="related">
                     <img src="<?php bloginfo('template_url'); ?>/imag/main/foot_carta_restaurant.png" class="img-responsive" />
                     <div class="title block-2">
-                        <h3><a href="#">Carta<br/>Bar</a></h3>
+                        <h3><a href="http://totem.terralhotel.cl/inicio/restaurant-y-bar-pataska/carta-bar/">Carta<br/>Bar</a></h3>
                     </div>
                 </div>
             </footer>
-        <?php } elseif ( is_single() ) { ?>
+        <?php } elseif ( is_page('carta-bar') || is_page('carta-restaurant') ) { ?>
+            <footer id="footer" class="clearfix">
+                <div class="related">
+                    <?php if ( is_page('carta-bar') ) { ?>
+                        <img src="<?php bloginfo('template_url'); ?>/imag/main/foot_carta_bar.png" class="img-responsive" />
+                    <? } else { ?>
+                        <img src="<?php bloginfo('template_url'); ?>/imag/main/foot_carta_restaurant.png" class="img-responsive" />
+                    <? } ?>
+                    <?php if ( is_page('carta-bar') ) { ?>
+                        <div class="title block-2">
+                            <h3><a href="http://totem.terralhotel.cl/inicio/restaurant-y-bar-pataska/carta-restaurant/">Carta Restaurant</a></h3>
+                        </div>
+                    <? } else { ?>
+                        <div class="title block-2">
+                            <h3><a href="http://totem.terralhotel.cl/inicio/restaurant-y-bar-pataska/carta-bar/">Carta Bar</a></h3>
+                        </div>
+                    <? } ?>
+                </div>
+            </footer>
+        <?php } elseif ( is_singular('tours') ) { ?>
             <footer id="footer" class="clearfix footer-ficha">
                 <div class="container cont-testimonios shadow">
-                    <div class="col-xs-10 no-float">
+                    <div class="col-xs-11 no-float">
                         <?php
                             $connected = new WP_Query( array(
                                 'connected_type' => 'testimonios_to_tours',
@@ -36,7 +55,7 @@
                         ?>
                         <?php $i=0; while ( $connected->have_posts() ) : $connected->the_post(); ?>
                             <div class="testimonios">
-                                <h6><? the_title();?></h6>
+                                <? the_content();?>
                             </div>
                         <?php $i++; endwhile; ?>
                         <?php wp_reset_postdata();
@@ -45,32 +64,12 @@
                     </div>
                 </div>
             </footer>
-        <?php } elseif ( is_page('evalua-tu-estadia') ) { ?>
-            <footer id="footer" class="clearfix absolute-footer">
-                <div class="nav-buttons">
-                </div>
-            </footer>
         <?php } else { ?>
             <footer id="footer" class="clearfix no-footer">
             </footer>
         <?php } ?>
         <!--/FOOTER-->
     </div>
-    <?php if ( is_page('evalua-tu-estadia') ) { ?>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js"></script>
-        <script src="<?php bloginfo('template_url'); ?>/js/jquery.liquid-slider.min.js"></script>  
-        <script>
-            $('#main-slider').liquidSlider({
-                hideSideArrows: true,
-                dynamicTabs: true,
-                hoverArrows: false,
-                dynamicArrowsGraphical: false,
-                dynamicArrowLeftText: 'ANTERIOR',
-                dynamicArrowRightText: 'SIGUIENTE'
-            });
-        </script>
-    <?php } ?>
 <?php wp_footer(); ?>
 </body>
 </html>

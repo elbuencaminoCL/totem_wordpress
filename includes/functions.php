@@ -289,13 +289,13 @@ function create_post_type_carta() {
             'labels' => array(
                 'name' => __('Cartas'),
                 'singular_name' => __('Carta'),
-                'add_new' => __('Agregar carta'),
-                'add_new_item' => __('Agregar nueva carta'),
-                'edit_item' => __('Editar carta'),
-                'new_item' => __('Nueva carta'),
-                'all_items' => __('Todas las cartas'),
-                'view_item' => __('Ver cartas'),
-                'search_items' => __('Buscar cartas')
+                'add_new' => __('Agregar ítem'),
+                'add_new_item' => __('Agregar nuevo ítem'),
+                'edit_item' => __('Editar ítem'),
+                'new_item' => __('Nuevo ítem'),
+                'all_items' => __('Todos los ítems'),
+                'view_item' => __('Ver ítems de las cartas'),
+                'search_items' => __('Buscar en ítems de cartas')
             ),
             'public' => true,
             'has_archive' => true,
@@ -329,21 +329,31 @@ function create_taxonomy_carta() {
         'show_admin_column'   => true,
         'query_var'           => true,
     );
-    register_taxonomy('tipos-de-cartas', array('cartas'), $args);
+    register_taxonomy('tipos-de-cartas', array('carta'), $args);
 }
 
 //=================================================================== IMAGES FUNCTIONS//
 function get_gallery_images(){
     global $wpdb;
     $gallery_pict = $wpdb->get_results("SELECT ID, post_title, post_content, post_excerpt FROM $wpdb->posts WHERE post_type = 'attachment' AND post_mime_type LIKE 'image%' AND post_excerpt LIKE 'galeria%' AND post_parent = '".get_the_ID()."' ORDER BY menu_order");
-    if ( $gallery_pict ) {
-        foreach ( $gallery_pict as $gal ) {
-            echo '<div class="col-xs-3">';
-                echo '<a href="'.wp_get_attachment_url($gal->ID).'" class="img-responsive" rel="prettyPhoto[gallery1]" title="'.$gal->post_title.'">';
-                    echo wp_get_attachment_image($gal->ID, 'gal-image',array('class' => 'img-responsive'));
-                echo '</a>';
-            echo '</div>';
-        } 
+    if ($gallery_pict) {
+        echo '<ul class="bxslider">';
+        foreach ($gallery_pict as $gal) {
+            echo '<li>';
+                $description = $gal->post_content;
+                echo wp_get_attachment_image($gal->ID, 'gal-image',array('class' => 'img-responsive'));
+                if ($description):
+                    echo '<div class="cont-picture-desc">'.$description.'</div>';
+                endif;
+            echo '</li>';
+        } $i++;
+        echo '</ul>';
+        echo '<div id="bx-pager">';
+        $i = 0;
+        foreach ($gallery_pict as $gal) {
+            echo '<a data-slide-index="'.$i.'" href="">'.wp_get_attachment_image($gal->ID, 'thumb-image',array('class' => 'img-responsive')).'</a>';
+        $i++; } 
+        echo '</div>';
     }
 }
 
@@ -384,6 +394,14 @@ function my_connection_types() {
         'name' => 'testimonios_to_tours',
         'from' => 'testimonios',
         'to' => 'tours',
+        'cardinality' => 'many-to-many',
+        'prevent_duplicates' => true,
+        'reciprocal' => true
+    ) );
+    p2p_register_connection_type( array(
+        'name' => 'tours_to_post',
+        'from' => 'tours',
+        'to' => 'post',
         'cardinality' => 'many-to-many',
         'prevent_duplicates' => true,
         'reciprocal' => true

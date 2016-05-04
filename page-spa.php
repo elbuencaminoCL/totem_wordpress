@@ -24,14 +24,14 @@
                             ?>
                         </div>
                     </div>
-                    <div class="top">
+                    <div class="top" id="<? echo $post->post_name; ?>">
                         <?php if( get_field('_subir_imagen') ): ?>
                             <img src="<?php the_field('_subir_imagen'); ?>" class="img-responsive" />
                         <?php endif; ?>
                         <div class="fixed-position">
-                            <div class="title block-2 no-float"><h2>Servicios<br/>SPA</h2></div>
+                            <div class="title"><h2><? the_title();?></h2></div>
                             <div class="main-intro">
-                                <p class="no-float">Conoce nuestra propuesta pensada para el bienestar de tu cuerpo, mente y espíritu.</p>
+                                <p class="no-float"><? the_excerpt();?></p>
                             </div>
                         </div>
                     </div>
@@ -59,42 +59,21 @@
                                             <?php endif; ?>
                                             <div class="item-tour">
                                                 <h4><a href="<? the_permalink();?>"><? the_title();?></a></h4>
-                                                <div class="tour-detail clearfix">
-                                                    <div class="left">
-                                                        <? 
-                                                            if(get_post_meta($post->ID, '_lugar', true)){
-                                                                echo '<span>Lugar: '.get_post_meta($post->ID, '_lugar', true).'</span>';
-                                                            }
-                                                        ?>
-                                                    </div>
-                                                    <div class="right">
-                                                        <? 
-                                                            if(get_post_meta($post->ID, '_duracion_tour', true)){
-                                                                echo '<span>Duración: '.get_post_meta($post->ID, '_duracion_tour', true).'</span>';
-                                                            }
-                                                        ?>
-                                                    </div>
-                                                </div>
                                                 <div class="description">
                                                     <div class="top-description">
                                                         <?
                                                             global $post;
                                                             if (has_excerpt( $post->ID )) {
-                                                                echo '<p>'.excerpt(35).' ...</p>';
+                                                                echo '<p>'.get_the_excerpt().'</p>';
                                                             }
                                                         ?>
                                                     </div>
                                                     <div class="price-description">
-                                                        <? 
-                                                            if(get_post_meta($post->ID, '_precio_pesos', true)){
-                                                                echo '<div class="price">';
-                                                                    echo 'Desde: <span>CLP '.get_post_meta($post->ID, '_precio_pesos', true).' / USD '.get_post_meta($post->ID, '_precio_dolares', true).'</span>';
-                                                                echo '</div>';
-                                                            }
-                                                        ?>
-                                                        <div class="cont-buttons clearfix">
-                                                            <a href="<? the_permalink();?>" class="button info">Más Info</a>
-                                                            <a href="#" class="button reserva">Reservar</a>
+                                                        <div class="price">
+                                                            <div class="cont-buttons clearfix">
+                                                                <a href="<? the_permalink();?>" class="button info">Más Info</a>
+                                                                <!--<a href="<? bloginfo('wpurl')?>/reserva/" class="button reserva ajax">Reservar</a>-->
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="cont-hide">
